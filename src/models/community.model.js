@@ -30,10 +30,10 @@ const CommunitySchema = mongoose.Schema({
     type: Number,
     required: true,
   },
-  token_id: {
-    type: String,
+  token: {
+    type: mongoose.Types.ObjectId,
+    ref: 'Token',
     required: true,
-    trim: true,
   },
   user: [
     {

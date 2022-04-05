@@ -17,13 +17,18 @@ const tokenSchema = mongoose.Schema({
     required: false,
     trim: true,
   },
+  timestamps: true,
   user: [
     {
       type: mongoose.Types.ObjectId,
       ref: 'User',
     },
   ],
-  timestamps: true,
+  community: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: 'Community',
+  },
 });
 
 // add plugin that converts mongoose to json

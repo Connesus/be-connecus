@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
 
 const linkSchema = mongoose.Schema({
-  community_id: {
-    type: mongoose.Types.ObjectId,
-    required: true,
-    trim: true,
-  },
   platform: {
     type: String,
     required: true,
@@ -16,6 +11,11 @@ const linkSchema = mongoose.Schema({
     trim: true,
   },
   timestamps: true,
+  community: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: 'Community',
+  },
 });
 
 /**

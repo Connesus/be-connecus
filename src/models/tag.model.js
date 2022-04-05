@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
 
 const tagSchema = mongoose.Schema({
-  community_id: {
-    type: mongoose.Types.ObjectId,
-    required: true,
-    trim: true,
-  },
   platform: {
     type: String,
     required: true,
@@ -15,13 +10,18 @@ const tagSchema = mongoose.Schema({
     required: false,
     trim: true,
   },
+  timestamps: true,
+  community: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: 'Community',
+  },
   posts: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Post',
     },
   ],
-  timestamps: true,
 });
 
 /**

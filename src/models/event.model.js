@@ -7,6 +7,11 @@ const eventSchema = mongoose.Schema({
     trim: true,
   },
   timestamps: true,
+  community: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: 'Community',
+  },
 });
 
 /**

@@ -41,10 +41,10 @@ const userSchema = mongoose.Schema({
     enum: roles,
     default: 'user',
   },
-  avatar_id: {
+  avatar: {
     type: mongoose.Types.ObjectId,
     required: false,
-    trim: true,
+    ref: 'Avatar',
   },
   token: [
     {

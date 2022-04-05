@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
 const postSchema = mongoose.Schema({
-  user_id: {
+  user: {
     type: mongoose.Types.ObjectId,
     required: true,
-    trim: true,
+    ref: 'User',
   },
-  community_id: {
+  community: {
     type: mongoose.Types.ObjectId,
     required: true,
-    trim: true,
+    ref: 'Community',
   },
   status: {
     type: Boolean,
