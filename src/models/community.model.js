@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 
 const CommunitySchema = mongoose.Schema({
-  user_id: {
-    type: String,
+  owner: {
+    type: mongoose.SchemaTypes.ObjectId,
     required: true,
-    trim: true,
   },
   thumbnail: {
     type: String,
@@ -35,12 +34,16 @@ const CommunitySchema = mongoose.Schema({
     ref: 'Token',
     required: true,
   },
-  user: [
+  users: [
     {
       type: mongoose.Types.ObjectId,
       ref: 'User',
     },
   ],
+  slug: {
+    type: String,
+    required: true,
+  },
   timestamps: true,
 });
 

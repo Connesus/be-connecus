@@ -17,14 +17,9 @@ const postSchema = mongoose.Schema({
     default: false,
   },
   permissions: {
-    type: String,
+    type: mongoose.Types.ObjectId,
     required: true,
-    trim: true,
-  },
-  image: {
-    type: String,
-    required: false,
-    trim: true,
+    ref: 'Permissions',
   },
   video: {
     type: String,
@@ -60,10 +55,28 @@ const postSchema = mongoose.Schema({
       ref: 'Tag',
     },
   ],
+  medias: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Media',
+    },
+  ],
   event: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Event',
+    },
+  ],
+  likes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    },
+  ],
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Comments',
     },
   ],
   timestamps: true,

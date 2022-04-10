@@ -12,8 +12,20 @@ const commentSchema = mongoose.Schema({
     ref: 'User',
   },
   content: {
+    type: String,
+    required: true,
+  },
+  // tag other user in comment
+  tags: {
     type: mongoose.Types.ObjectId,
     required: true,
+    ref: 'User',
+  },
+  // reply any comment
+  comment_reply: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: 'Comment',
   },
   timestamps: true,
 });
