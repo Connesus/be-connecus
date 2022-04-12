@@ -1,18 +1,20 @@
 const mongoose = require('mongoose');
 
-const permissionsSchema = mongoose.Schema({
-  type: {
-    type: String,
-    required: false,
-    trim: true,
+const permissionsSchema = mongoose.Schema(
+  {
+    type: {
+      type: String,
+      required: false,
+      trim: true,
+    },
+    description: {
+      type: String,
+      required: false,
+      trim: true,
+    },
   },
-  description: {
-    type: String,
-    required: false,
-    trim: true,
-  },
-  timestamps: true,
-});
+  { timestamps: true }
+);
 
 /**
  * @typedef Permissions

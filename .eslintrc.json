@@ -4,9 +4,14 @@
     "jest": true
   },
   "extends": ["airbnb-base", "plugin:jest/recommended", "plugin:security/recommended", "plugin:prettier/recommended"],
-  "plugins": ["jest", "security", "prettier"],
+  "plugins": ["jest", "security", "prettier", "import"],
   "parserOptions": {
     "ecmaVersion": 2018
+  },
+  "settings": {
+    "jest": {
+      "version": 26
+    }
   },
   "rules": {
     "no-console": "error",
@@ -14,6 +19,29 @@
     "no-underscore-dangle": "off",
     "consistent-return": "off",
     "jest/expect-expect": "off",
-    "security/detect-object-injection": "off"
+    "security/detect-object-injection": "off",
+    "import/order": [
+      "error",
+      {
+        "pathGroups": [
+          {
+            "pattern": "~/**",
+            "group": "external",
+            "position": "after"
+          }
+        ],
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type",
+          "unknown"
+        ]
+      }
+    ]
   }
 }

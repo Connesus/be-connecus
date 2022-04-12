@@ -1,54 +1,57 @@
 const mongoose = require('mongoose');
 
-const CommunitySchema = mongoose.Schema({
-  owner: {
-    type: mongoose.SchemaTypes.ObjectId,
-    required: true,
-  },
-  thumbnail: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  avatar: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  conver_image: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  description: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  privacy: {
-    type: Number,
-    required: true,
-  },
-  token: {
-    type: mongoose.Types.ObjectId,
-    ref: 'Token',
-    required: true,
-  },
-  users: [
-    {
-      type: mongoose.Types.ObjectId,
-      ref: 'User',
+const communitySchema = mongoose.Schema(
+  {
+    owner: {
+      type: mongoose.SchemaTypes.ObjectId,
+      required: true,
     },
-  ],
-  slug: {
-    type: String,
-    required: true,
+    thumbnail: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    avatar: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    conver_image: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    privacy: {
+      type: Number,
+      required: true,
+    },
+    token: {
+      type: mongoose.Types.ObjectId,
+      ref: 'Token',
+      required: true,
+    },
+    slug: {
+      type: String,
+      required: true,
+    },
+    users: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
   },
-  timestamps: true,
-});
+  { timestamps: true }
+);
 
 /**
- * @typedef CommunitySchema
+ * @typedef Community
  */
+const Community = mongoose.model('Community', communitySchema);
 
-module.exports = CommunitySchema;
+module.exports = Community;

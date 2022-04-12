@@ -9,10 +9,16 @@ const register = {
   }),
 };
 
+// const login = {
+//   body: Joi.object().keys({
+//     email: Joi.string().required(),
+//     password: Joi.string().required(),
+//   }),
+// };
+
 const login = {
   body: Joi.object().keys({
-    email: Joi.string().required(),
-    password: Joi.string().required(),
+    accountId: Joi.string().required(),
   }),
 };
 

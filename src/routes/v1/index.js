@@ -1,8 +1,11 @@
 const express = require('express');
+const config = require('../../config/config');
 const authRoute = require('./auth.route');
+const commentRoute = require('./comment.route');
+const communityRoute = require('./community.route');
 const userRoute = require('./user.route');
 const docsRoute = require('./docs.route');
-const config = require('../../config/config');
+const postRoute = require('./post.route');
 
 const router = express.Router();
 
@@ -14,6 +17,18 @@ const defaultRoutes = [
   {
     path: '/users',
     route: userRoute,
+  },
+  {
+    path: '/comment',
+    route: commentRoute,
+  },
+  {
+    path: '/community',
+    route: communityRoute,
+  },
+  {
+    path: '/post',
+    route: postRoute,
   },
 ];
 

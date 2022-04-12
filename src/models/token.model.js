@@ -1,36 +1,37 @@
 const mongoose = require('mongoose');
 const { toJSON } = require('./plugins');
-const { tokenTypes } = require('../config/tokens');
 
 const tokenSchema = mongoose.Schema(
   {
-    token: {
+    name: {
       type: String,
-      required: true,
-      index: true,
+      required: false,
+      trim: true,
     },
-    user: {
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: 'User',
-      required: true,
-    },
-    type: {
+    symbol: {
       type: String,
-      enum: [tokenTypes.REFRESH, tokenTypes.RESET_PASSWORD, tokenTypes.VERIFY_EMAIL],
-      required: true,
+      required: false,
+      trim: true,
     },
-    expires: {
-      type: Date,
-      required: true,
+    logo: {
+      type: String,
+      required: false,
+      trim: true,
     },
-    blacklisted: {
-      type: Boolean,
-      default: false,
+
+    user: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
+    community: {
+      type: mongoose.Types.ObjectId,
+      required: true,
+      ref: 'Community',
     },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
 // add plugin that converts mongoose to json

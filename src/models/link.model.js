@@ -1,22 +1,24 @@
 const mongoose = require('mongoose');
 
-const linkSchema = mongoose.Schema({
-  platform: {
-    type: String,
-    required: true,
+const linkSchema = mongoose.Schema(
+  {
+    platform: {
+      type: String,
+      required: true,
+    },
+    url: {
+      type: String,
+      required: false,
+      trim: true,
+    },
+    community: {
+      type: mongoose.Types.ObjectId,
+      required: true,
+      ref: 'Community',
+    },
   },
-  url: {
-    type: String,
-    required: false,
-    trim: true,
-  },
-  timestamps: true,
-  community: {
-    type: mongoose.Types.ObjectId,
-    required: true,
-    ref: 'Community',
-  },
-});
+  { timestamps: true }
+);
 
 /**
  * @typedef Link

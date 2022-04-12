@@ -29,7 +29,7 @@ const updatePost = catchAsync(async (req, res) => {
   res.send(post);
 });
 
-const deleteUser = catchAsync(async (req, res) => {
+const deletePost = catchAsync(async (req, res) => {
   await postService.deletePostById(req.params.userId);
   res.status(httpStatus.NO_CONTENT).send();
 });
@@ -39,5 +39,5 @@ module.exports = {
   getPosts,
   getPost,
   updatePost,
-  deleteUser,
+  deletePost,
 };
