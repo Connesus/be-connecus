@@ -12,12 +12,12 @@ const createCommunity = catchAsync(async (req, res) => {
 const getCommunities = catchAsync(async (req, res) => {
   const filter = pick(req.query, ['name', 'role']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
-  const result = await communityService.queryUsers(filter, options);
+  const result = await communityService.queryCommunities(filter, options);
   res.send(result);
 });
 
 const getCommunity = catchAsync(async (req, res) => {
-  const post = await communityService.getCommunityById(req.params.postId);
+  const post = await communityService.getCommunityById(req.params.communityId);
   if (!post) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Post not found');
   }
@@ -25,12 +25,12 @@ const getCommunity = catchAsync(async (req, res) => {
 });
 
 const updateCommunity = catchAsync(async (req, res) => {
-  const post = await communityService.updateCommunityById(req.params.postId, req.body);
+  const post = await communityService.updateCommunityById(req.params.communityId, req.body);
   res.send(post);
 });
 
 const deleteCommunity = catchAsync(async (req, res) => {
-  await communityService.deleteCommunityById(req.params.userId);
+  await communityService.deleteCommunityById(req.params.communityId);
   res.status(httpStatus.NO_CONTENT).send();
 });
 

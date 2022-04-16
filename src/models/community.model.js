@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { toJSON, paginate } = require('./plugins');
 
 const communitySchema = mongoose.Schema(
   {
@@ -8,7 +9,7 @@ const communitySchema = mongoose.Schema(
     },
     thumbnail: {
       type: String,
-      required: true,
+      required: false,
       trim: true,
     },
     avatar: {
@@ -16,7 +17,7 @@ const communitySchema = mongoose.Schema(
       required: true,
       trim: true,
     },
-    conver_image: {
+    convertImage: {
       type: String,
       required: true,
       trim: true,
@@ -33,7 +34,7 @@ const communitySchema = mongoose.Schema(
     token: {
       type: mongoose.Types.ObjectId,
       ref: 'Token',
-      required: true,
+      required: false,
     },
     slug: {
       type: String,
@@ -48,6 +49,10 @@ const communitySchema = mongoose.Schema(
   },
   { timestamps: true }
 );
+
+// add plugin that converts mongoose to json
+communitySchema.plugin(toJSON);
+communitySchema.plugin(paginate);
 
 /**
  * @typedef Community

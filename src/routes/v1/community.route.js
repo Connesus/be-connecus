@@ -11,7 +11,7 @@ router
   .get(validate(communityVadidation.getCommunities), communityController.getCommunities);
 
 router
-  .route('/:commentId')
+  .route('/:communityId')
   .get(validate(communityVadidation.getCommunity), communityController.getCommunity)
   .patch(validate(communityVadidation.updateCommunity), communityController.updateCommunity)
   .delete(validate(communityVadidation.deleteCommunity), communityController.deleteCommunity);

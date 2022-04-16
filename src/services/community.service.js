@@ -20,7 +20,7 @@ const createCommunity = async (communityBody) => {
  * @param {number} [options.page] - Current page (default = 1)
  * @returns {Promise<QueryResult>}
  */
-const queryCommunity = async (filter, options) => {
+const queryCommunities = async (filter, options) => {
   const posts = await Community.paginate(filter, options);
   return posts;
 };
@@ -66,7 +66,8 @@ const deleteCommunityById = async (communityId) => {
 
 module.exports = {
   createCommunity,
-  queryCommunity,
+  queryCommunities,
+  getCommunityById,
   updateCommunityById,
   deleteCommunityById,
 };

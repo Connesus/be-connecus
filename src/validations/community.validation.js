@@ -3,9 +3,9 @@ const { objectId } = require('./custom.validation');
 
 const createCommunity = {
   body: Joi.object().keys({
-    thumbnail: Joi.string().required(),
+    owner: Joi.string().custom(objectId),
     avatar: Joi.string().required(),
-    conver_image: Joi.string().required(),
+    convertImage: Joi.string().required(),
     description: Joi.string().required(),
     privacy: Joi.number().required(),
     token: Joi.string().custom(objectId),
@@ -35,7 +35,7 @@ const updateCommunity = {
     .keys({
       thumbnail: Joi.string().required(),
       avatar: Joi.string().required(),
-      conver_image: Joi.string().required(),
+      convertImage: Joi.string().required(),
       description: Joi.string().required(),
       privacy: Joi.number().required(),
       token: Joi.string().custom(objectId),

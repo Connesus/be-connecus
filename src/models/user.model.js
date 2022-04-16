@@ -3,41 +3,36 @@ const { roles } = require('../config/roles');
 
 const userSchema = mongoose.Schema(
   {
+    accountId: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     name: {
       type: String,
       required: true,
       trim: true,
     },
-    display_name: {
+    displayName: {
       type: String,
       required: true,
       trim: true,
     },
-    nonce: {
-      type: String,
-      required: true,
-      default: Math.floor(Math.random() * 1000000),
-    },
-    passport_id: {
+    passportId: {
       type: String,
       required: false,
       trim: true,
     },
-    passport_type: {
+    passportType: {
       type: String,
       required: false,
-    },
-    public_bc_key: {
-      type: String,
-      required: false,
-      trim: true,
     },
     status: {
       type: Boolean,
       required: true,
       default: false,
     },
-    is_active: {
+    isActive: {
       type: Boolean,
       required: true,
       default: false,

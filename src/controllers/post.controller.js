@@ -12,7 +12,7 @@ const createPost = catchAsync(async (req, res) => {
 const getPosts = catchAsync(async (req, res) => {
   const filter = pick(req.query, ['name', 'role']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
-  const result = await postService.queryUsers(filter, options);
+  const result = await postService.queryPosts(filter, options);
   res.send(result);
 });
 
@@ -30,7 +30,7 @@ const updatePost = catchAsync(async (req, res) => {
 });
 
 const deletePost = catchAsync(async (req, res) => {
-  await postService.deletePostById(req.params.userId);
+  await postService.deletePostById(req.params.postId);
   res.status(httpStatus.NO_CONTENT).send();
 });
 

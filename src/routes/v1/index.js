@@ -6,6 +6,7 @@ const communityRoute = require('./community.route');
 const userRoute = require('./user.route');
 const docsRoute = require('./docs.route');
 const postRoute = require('./post.route');
+const tokenRoute = require('./token.route');
 
 const router = express.Router();
 
@@ -29,6 +30,10 @@ const defaultRoutes = [
   {
     path: '/post',
     route: postRoute,
+  },
+  {
+    path: '/token',
+    route: tokenRoute,
   },
 ];
 

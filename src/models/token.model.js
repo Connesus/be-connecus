@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { toJSON } = require('./plugins');
+const { toJSON, paginate } = require('./plugins');
 
 const tokenSchema = mongoose.Schema(
   {
@@ -18,7 +18,6 @@ const tokenSchema = mongoose.Schema(
       required: false,
       trim: true,
     },
-
     user: [
       {
         type: mongoose.Types.ObjectId,
@@ -36,6 +35,7 @@ const tokenSchema = mongoose.Schema(
 
 // add plugin that converts mongoose to json
 tokenSchema.plugin(toJSON);
+tokenSchema.plugin(paginate);
 
 /**
  * @typedef Token

@@ -18,7 +18,7 @@ const router = express.Router();
 //   .delete(auth('manageUsers'), validate(userValidation.deleteUser), userController.deleteUser);
 router
   .route('/')
-  .post((req, res) => res.send({ hello: 'hello' }))
+  .post(validate(userValidation.createUser), userController.createUser)
   .get(auth('getUsers'), validate(userValidation.getUsers), userController.getUsers);
 
 router

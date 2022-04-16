@@ -6,3 +6,5 @@ module.exports.Media = require('./media.model');
 module.exports.Permissions = require('./permissions.model');
 module.exports.Post = require('./post.model');
 module.exports.Tag = require('./tag.model');
+module.exports.Community = require('./community.model');
+module.exports.Comment = require('./comment.model');

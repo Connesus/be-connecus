@@ -67,6 +67,7 @@ const deletePostById = async (postId) => {
 module.exports = {
   createPost,
   queryPosts,
+  getPostById,
   updatePostById,
   deletePostById,
 };

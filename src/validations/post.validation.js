@@ -18,7 +18,9 @@ const createPost = {
 
 const getPosts = {
   query: Joi.object().keys({
-    communityId: Joi.string().custom(objectId),
+    sortBy: Joi.string(),
+    limit: Joi.number().integer(),
+    page: Joi.number().integer(),
   }),
 };
 

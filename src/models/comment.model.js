@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { toJSON, paginate } = require('./plugins');
 
 const commentSchema = mongoose.Schema(
   {
@@ -16,21 +17,23 @@ const commentSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    // tag other user in comment
-    user_tags: {
+    userTags: {
       type: mongoose.Types.ObjectId,
-      required: true,
+      required: false,
       ref: 'User',
     },
-    // reply any comment
-    comment_reply: {
+    commentReply: {
       type: mongoose.Types.ObjectId,
-      required: true,
+      required: false,
       ref: 'Comment',
     },
   },
   { timestamps: true }
 );
+
+// add plugin that converts mongoose to json
+commentSchema.plugin(toJSON);
+commentSchema.plugin(paginate);
 
 /**
  * @typedef Comment

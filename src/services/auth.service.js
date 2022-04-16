@@ -1,8 +1,10 @@
 const httpStatus = require('http-status');
+const { baseDecode } = require('borsh');
+const nacl = require('tweetnacl');
 const Token = require('../models/_token.model');
 const ApiError = require('../utils/ApiError');
 const { tokenTypes } = require('../config/tokens');
-const userService = require('./_user.service');
+const userService = require('./user.service');
 const tokenService = require('./_token.service');
 
 /**
@@ -90,10 +92,33 @@ const verifyEmail = async (verifyEmailToken) => {
   }
 };
 
+/**
+ * Verify Signature
+ * @param {string} account
+ * @param {Object} encodedSignature
+ * @param {string} publicKey
+ * example request
+ * {
+ *     "account": "icebear.testnet",
+ *     "signature": "sign(NEAR account, secretKey)",
+ *     "publicKey": "ed25519:7daxSGX1iXdbVkudadAwnr2arpctpvEaNzkv59nd2iJg"
+ * }
+ * @returns {Promise}
+ */
+const verifySignature = async (accountId, encodedSignature, publicKey) => {
+  const message = new TextEncoder().encode(accountId);
+  const pb = new Uint8Array(Buffer.from(baseDecode(publicKey.split(':')[1])));
+  const signature = new Uint8Array(baseDecode(encodedSignature));
+  if (nacl.sign.detached.verify(message, signature, pb)) {
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'Signature verification failed');
+  }
+};
+
 module.exports = {
   loginUserWithEmailAndPassword,
   logout,
   refreshAuth,
   resetPassword,
   verifyEmail,
+  verifySignature,
 };

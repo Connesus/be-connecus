@@ -6,8 +6,8 @@ const createComment = {
     post: Joi.string().custom(objectId),
     user: Joi.string().custom(objectId),
     content: Joi.string().required(),
-    user_tags: Joi.string().custom(objectId),
-    comment_reply: Joi.string().custom(objectId),
+    userTags: Joi.string().custom(objectId),
+    commentReply: Joi.string().custom(objectId),
   }),
 };
 
@@ -30,7 +30,7 @@ const updateComment = {
   body: Joi.object()
     .keys({
       content: Joi.string().required(),
-      user_tags: Joi.string().custom(objectId),
+      userTags: Joi.string().custom(objectId),
     })
     .min(1),
 };

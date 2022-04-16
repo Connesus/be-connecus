@@ -8,7 +8,7 @@ const router = express.Router();
 router
   .route('/')
   .post(validate(postValidation.createPost), postController.createPost)
-  .get(validate(postValidation.getPosts), postController.getPost);
+  .get(validate(postValidation.getPosts), postController.getPosts);
 
 router
   .route('/:postId')

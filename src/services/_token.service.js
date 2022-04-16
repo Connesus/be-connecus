@@ -5,7 +5,7 @@ const config = require('../config/config');
 const { Token } = require('../models');
 const ApiError = require('../utils/ApiError');
 const { tokenTypes } = require('../config/tokens');
-const userService = require('./_user.service');
+const userService = require('./user.service');
 
 /**
  * Generate token
