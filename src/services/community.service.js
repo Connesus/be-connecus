@@ -58,7 +58,7 @@ const updateCommunityById = async (communityId, updateBody) => {
 const deleteCommunityById = async (communityId) => {
   const community = await getCommunityById(communityId);
   if (!community) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'Community not ound');
+    throw new ApiError(httpStatus.NOT_FOUND, 'Community not found');
   }
   await community.remove();
   return community;
